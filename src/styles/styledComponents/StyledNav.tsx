@@ -11,7 +11,8 @@ export const StyledNavItem = styled(ActiveLink)`
   text-decoration: none;
   color: ${({ theme }) => theme.colors.gray};
   position: relative;
-  line-height: 4rem;
+  line-height: 5.5rem;
+  font-size: 18px;
   &.active {
     color:  ${({ theme }) => theme.colors.tannat};
   }
