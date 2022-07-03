@@ -21,12 +21,14 @@ const Header = (): JSX.Element => {
 
   return (
     <StyledHeader>
-      {isMobile && <SideBar />}
-      <Logo />
-      {!isMobile && <Nav />}
-      <Search />
-      {!isMobile && <UserAccount />}
-      <WineBox />
+      <div className='headerContent'>
+        {isMobile && <SideBar />}
+        <Logo />
+        {!isMobile && <Nav />}
+        <Search />
+        {!isMobile && <UserAccount />}
+        <WineBox />
+      </div>
     </StyledHeader>
   )
 }
