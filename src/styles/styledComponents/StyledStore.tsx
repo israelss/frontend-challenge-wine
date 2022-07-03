@@ -20,8 +20,6 @@ export const StyledPaginator = styled.div`
 `
 
 export const StyledProductCard = styled.div`
-  width: 256px;
-  height: 390px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
