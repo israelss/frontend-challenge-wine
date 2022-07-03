@@ -1,11 +1,12 @@
 // Hook found @ https://usehooks.com/useWindowSize/
-// Modified to use outer{Width,Height} instead of inner{Width,Height}
-import { useEffect, useState } from "react";
+// Modified to export isMobile state
+import { useEffect, useState } from 'react'
 
 // Define general type for useWindowSize hook, which includes width and height
 interface Size {
-  width: number | undefined;
-  height: number | undefined;
+  width: number | undefined
+  height: number | undefined
+  isMobile: boolean
 }
 
 export const useWindowSize = (): Size => {
@@ -14,22 +15,25 @@ export const useWindowSize = (): Size => {
   const [windowSize, setWindowSize] = useState<Size>({
     width: undefined,
     height: undefined,
-  });
+    isMobile: false
+  })
+
   useEffect(() => {
     // Handler to call on window resize
-    function handleResize() {
+    function handleResize (): void {
       // Set window width/height to state
       setWindowSize({
-        width: window.outerWidth,
-        height: window.outerHeight,
-      });
+        width: window.innerWidth,
+        height: window.innerHeight,
+        isMobile: window.innerWidth <= 375
+      })
     }
     // Add event listener
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize)
     // Call handler right away so state gets updated with initial window size
-    handleResize();
+    handleResize()
     // Remove event listener on cleanup
-    return () => window.removeEventListener("resize", handleResize);
-  }, []); // Empty array ensures that effect is only run on mount
-  return windowSize;
+    return () => window.removeEventListener('resize', handleResize)
+  }, []) // Empty array ensures that effect is only run on mount
+  return windowSize
 }
