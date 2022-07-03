@@ -7,6 +7,7 @@ import Paginator from '@components/Paginator'
 import ProductCard from '@components/ProductCard'
 import RangeFilter from '@components/RangeFilter'
 import { API_URL, validateQueryItem } from '@utils/store'
+import { StyledProductList, StyledStore } from 'src/styles/styledComponents'
 
 const requestOptions: RequestInit = {
   method: 'GET',
@@ -36,15 +37,17 @@ const Store = ({ products, queryFilter, queryName }: StoreProps): JSX.Element =>
   }
 
   return (
-    <div>
+    <StyledStore>
       <RangeFilter />
       <div>
         <div className='totalFound'>{products.totalItems} produtos encontrados</div>
-        {
-          products.items.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))
-        }
+        <StyledProductList>
+          {
+            products.items.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))
+          }
+        </StyledProductList>
         <Paginator
           mobile={false}
           itemsPerPage={products.itemsPerPage}
@@ -55,7 +58,7 @@ const Store = ({ products, queryFilter, queryName }: StoreProps): JSX.Element =>
           queryFilter={queryFilter}
         />
       </div>
-    </div>
+    </StyledStore>
   )
 }
 

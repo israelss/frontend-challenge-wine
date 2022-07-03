@@ -1,5 +1,6 @@
 import { ChangeEvent } from 'react'
 import { useFilter } from '@hooks/useFilter'
+import { StyledRangeFilter } from 'src/styles/styledComponents'
 
 const RangeFilter = (): JSX.Element => {
   const { setRangeFilter } = useFilter()
@@ -9,7 +10,7 @@ const RangeFilter = (): JSX.Element => {
   }
 
   return (
-    <div>
+    <StyledRangeFilter>
       <h3>Refine sua busca</h3>
       <h4>Por preço</h4>
       <label htmlFor='all'>
@@ -40,7 +41,7 @@ const RangeFilter = (): JSX.Element => {
         <input onChange={handleChange} type='radio' id='500Plus' name='priceRange' value='500-Infinity' />
         Acima de R$500
       </label>
-    </div>
+    </StyledRangeFilter>
   )
 }
 

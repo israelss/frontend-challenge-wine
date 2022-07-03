@@ -1,4 +1,5 @@
 import { getPage } from '@utils/store'
+import { StyledPaginator } from 'src/styles/styledComponents'
 
 interface Props {
   mobile: boolean
@@ -29,7 +30,7 @@ const Paginator = ({
 }: Props): JSX.Element => {
   return mobile
     ? (
-      <div>
+      <StyledPaginator>
         {
         itemsPerPage < totalItems && (
           <button onClick={() => handleClick(1, queryName, queryFilter, itemsPerPage + 8, true)}>
@@ -40,10 +41,10 @@ const Paginator = ({
         <div>
           Exibindo {itemsPerPage} de  {totalItems} produtos no total
         </div>
-      </div>
+      </StyledPaginator>
       )
     : (
-      <div>
+      <StyledPaginator>
         {
         page > 1 && (
           <>
@@ -67,7 +68,7 @@ const Paginator = ({
           </>
         )
       }
-      </div>
+      </StyledPaginator>
       )
 }
 
