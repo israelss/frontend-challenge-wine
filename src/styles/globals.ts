@@ -6,6 +6,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
   body {
+    background-color: ${({ theme }) => theme.colors.grayLightest};
     font-family: 'Lato', sans-serif;
   }
   a {
