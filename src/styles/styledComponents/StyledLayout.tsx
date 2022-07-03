@@ -8,7 +8,15 @@ export const StyledLayout = styled.div`
   background-color: ${({ theme }) => theme.colors.grayLightest};
   width: 100%;
 
-  .headerContent, .pageContent {
+  .headerContent {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1120px;
+    margin: auto;
+  }
+
+  .pageContent {
     max-width: 1120px;
     margin: auto;
   }
