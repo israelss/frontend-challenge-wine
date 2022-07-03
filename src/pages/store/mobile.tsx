@@ -6,6 +6,7 @@ import { useWindowSize } from '@hooks/useWindowSize'
 import Paginator from '@components/Paginator'
 import ProductCard from '@components/ProductCard'
 import { API_URL, validateQueryItem } from '@utils/store'
+import { StyledProductList } from 'src/styles/styledComponents'
 
 const requestOptions: RequestInit = {
   method: 'GET',
@@ -36,11 +37,13 @@ const Store = ({ products, queryFilter, queryName }: StoreProps): JSX.Element =>
   return (
     <div>
       <div className='totalFound'>{products.totalItems} produtos encontrados</div>
-      {
-        products.items.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))
-      }
+      <StyledProductList>
+        {
+          products.items.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))
+        }
+      </StyledProductList>
       <Paginator
         mobile
         itemsPerPage={products.itemsPerPage}
