@@ -10,7 +10,14 @@ export const StyledStore = styled.div`
 export const StyledProductList = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 33%);
-  gap: 0.5rem;
+  gap: 1.5rem;
+  margin-block: 1.5rem;
+
+  @media (max-width: 375px) {
+    grid-template-columns: repeat(2, 50%);
+    gap: 1rem;
+    margin-block: 1rem;
+  }
 `
 
 export const StyledPaginator = styled.div`
