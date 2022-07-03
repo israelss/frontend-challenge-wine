@@ -1,3 +1,4 @@
+import { validateQueryItem } from '@utils/store'
 import Router from 'next/router'
 import { createContext, PropsWithChildren, useEffect, useState } from 'react'
 import { FilterContextType } from 'src/types/filter'
@@ -22,13 +23,14 @@ export const FilterProvider = ({ children }: PropsWithChildren): JSX.Element => 
     } else {
       const path = Router.pathname
       const { page, limit } = Router.query
-      const queryPage = (Boolean(page) && page?.length !== 0) ? `&page=${JSON.stringify(page)}` : ''
+      const validatedPage = validateQueryItem(page)
+      const validatedLimit = validateQueryItem(limit)
+      const queryPage = validatedPage.length > 0 ? `&page=${validatedPage}` : '&page=1'
       if (path.includes('/store/mobile')) {
-        const queryLimit = (Boolean(limit) && limit?.length !== 0) ? `?limit=${JSON.stringify(limit)}` : ''
+        const queryLimit = validatedLimit.length > 0 ? `&limit=${validatedLimit}` : 'limit=8'
         void Router.push(`/loja/mobile${queryLimit}${queryPage}`)
       } else if (path.includes('/store')) {
-        const queryLimit = (Boolean(limit) && limit?.length !== 0) ? `?limit=${JSON.stringify(limit)}` : ''
-        void Router.push(`/loja${queryLimit}${queryPage}`)
+        void Router.push(`/loja${queryPage}`)
       }
     }
   }, [queryFilter, queryName])

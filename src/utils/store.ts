@@ -15,3 +15,10 @@ export const getPage = ({ page, queryFilter, queryName, mobile, limit }: GetPage
   const newPath = `${base}${queryLimit}${queryPage}${queryName}${queryFilter}`
   void Router.push(newPath, undefined, { scroll: !mobile })
 }
+
+export const validateQueryItem = (query?: string | string[]): string => {
+  const isValid = query !== undefined && query?.length > 0 && typeof query === 'string'
+  return isValid ? query : ''
+}
+
+export const API_URL = 'https://wine-back-test.herokuapp.com/products'

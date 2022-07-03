@@ -6,6 +6,7 @@ import { useWindowSize } from '@hooks/useWindowSize'
 import Paginator from '@components/Paginator'
 import ProductCard from '@components/ProductCard'
 import RangeFilter from '@components/RangeFilter'
+import { API_URL, validateQueryItem } from '@utils/store'
 
 const requestOptions: RequestInit = {
   method: 'GET',
@@ -65,10 +66,16 @@ export const getServerSideProps: GetServerSideProps = async ({ query, res }) => 
   )
 
   const { page, name, filter } = query
-  const queryFilter = (Boolean(filter) && filter?.length !== 0) ? `&filter=${JSON.stringify(filter)}` : ''
-  const queryName = (Boolean(name) && name?.length !== 0) ? `&name=${JSON.stringify(name)}` : ''
-  const queryPage = (Boolean(page) && page?.length !== 0) ? `&page=${JSON.stringify(page)}` : '&page=1'
-  const url = `https://wine-back-test.herokuapp.com/products?limit=9${queryPage}${queryName}${queryFilter}`
+
+  const validatedFilter = validateQueryItem(filter)
+  const validatedName = validateQueryItem(name)
+  const validatedPage = validateQueryItem(page)
+
+  const queryFilter = validatedFilter.length > 0 ? `&filter=${validatedFilter}` : ''
+  const queryName = validatedName.length > 0 ? `&name=${validatedName}` : ''
+  const queryPage = validatedPage.length > 0 ? `&page=${validatedPage}` : '&page=1'
+
+  const url = `${API_URL}?limit=9${queryPage}${queryName}${queryFilter}`
   const response = await fetch(url, requestOptions)
   const products: ProductsApiReturn = await response.json()
 
