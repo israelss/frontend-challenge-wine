@@ -23,7 +23,7 @@ export const StyledWineBox = styled.div`
   }
 
   .wineboxIcon {
-    margin-left: 2rem;
+    margin-left: 1rem;
     position: relative;
     height: 56px;
     width: 56px;
