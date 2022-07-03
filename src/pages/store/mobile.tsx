@@ -19,11 +19,11 @@ interface StoreProps {
 }
 
 const Store = ({ products, queryFilter, queryName }: StoreProps): JSX.Element => {
-  const { isMobile } = useWindowSize()
+  const { isMobile, width } = useWindowSize()
 
   useEffect(() => {
-    if (!isMobile) void Router.push(`/loja${queryName}${queryFilter}`)
-  }, [isMobile, queryFilter, queryName])
+    if (!isMobile && width !== undefined) void Router.push(`/loja${queryName}${queryFilter}`)
+  }, [isMobile, width, queryFilter, queryName])
 
   if (products.totalItems === 0) {
     return (
@@ -75,6 +75,15 @@ export const getServerSideProps: GetServerSideProps = async ({ query, res }) => 
   const url = `${API_URL}?${queryLimit}${queryPage}${queryName}${queryFilter}`
   const response = await fetch(url, requestOptions)
   const products: ProductsApiReturn = await response.json()
+
+  if (products.items.length === 0) {
+    return {
+      redirect: {
+        destination: '/loja/mobile',
+        permanent: false
+      }
+    }
+  }
 
   return {
     props: {

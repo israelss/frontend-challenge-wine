@@ -79,6 +79,15 @@ export const getServerSideProps: GetServerSideProps = async ({ query, res }) => 
   const response = await fetch(url, requestOptions)
   const products: ProductsApiReturn = await response.json()
 
+  if (products.items.length === 0) {
+    return {
+      redirect: {
+        destination: '/loja',
+        permanent: false
+      }
+    }
+  }
+
   return {
     props: {
       products,
