@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "ts-standard && next lint"
+    "lint": "ts-standard && next lint",
+    "test": "playwright test"
   },
   "dependencies": {
     "next": "12.2.0",
