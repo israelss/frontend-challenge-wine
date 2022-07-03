@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <div>
       <Link href="/">
-        <WineIcon id="wine-icon" />
+        <WineIcon id="wine-logo" />
       </Link>
     </div>
   )
