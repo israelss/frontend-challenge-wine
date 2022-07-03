@@ -5,7 +5,9 @@ const Logo = (): JSX.Element => {
   return (
     <div>
       <Link href='/'>
-        <WineIcon id='wine-logo' />
+        <a>
+          <WineIcon id='wine-logo' />
+        </a>
       </Link>
     </div>
   )
