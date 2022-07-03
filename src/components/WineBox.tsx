@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { useState } from 'react'
 import { useCart } from '@hooks/useCart'
 import WineIcon from './WineIcon'
@@ -10,7 +9,7 @@ const WineBox = (): JSX.Element => {
   const {
     cartItems,
     cartQuantity,
-    cartTotal,
+    cartTotal
   } = useCart()
 
   return (

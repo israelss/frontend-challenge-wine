@@ -20,7 +20,7 @@ export const StyledSearch = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: ${({theme}) => `1px solid ${theme.colors.grayDarker}`};
+  border: ${({ theme }) => `1px solid ${theme.colors.grayDarker}`};
   `
 
 export const StyledUserAccount = styled.div`

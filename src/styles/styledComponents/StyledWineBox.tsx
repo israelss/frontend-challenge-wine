@@ -19,7 +19,7 @@ export const StyledWineBox = styled.div`
     overflow-y: auto;
     width: min(20rem, 100%);
     z-index: 9999;
-    border-left: ${({theme}) => `1px solid ${theme.colors.tannatLight}`};
+    border-left: ${({ theme }) => `1px solid ${theme.colors.tannatLight}`};
   }
 
   .wineboxIcon {
@@ -75,13 +75,13 @@ export const StyledWineBoxItem = styled.div`
   padding: 0.5rem;
   margin-block: 0.2rem;
   border-radius: 0.3rem;
-  border: ${({theme}) => `1px solid ${theme.colors.grayLighter}`};
+  border: ${({ theme }) => `1px solid ${theme.colors.grayLighter}`};
 
   .removeItemButton {
     position: absolute;
     bottom: 0.2rem;
     right: 0.2rem;
-    background-color: ${({theme})=> theme.colors.grayLighter};
+    background-color: ${({ theme }) => theme.colors.grayLighter};
     padding: 0.3rem;
     border-radius: 0.2rem;
     margin: 0.1rem;
@@ -97,17 +97,17 @@ export const StyledWineBoxItem = styled.div`
     height: 21px;
     width: 21px;
     border-radius: 0.2rem;
-    border: ${({theme}) => `1px solid ${theme.colors.grayLighter}`};
+    border: ${({ theme }) => `1px solid ${theme.colors.grayLighter}`};
   }
 
   .plusButton {
-    background-color: ${({theme})=> theme.colors.tannatLight};
-    color: ${({theme})=> theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.tannatLight};
+    color: ${({ theme }) => theme.colors.white};
   }
 
   .itemPrice {
     font-size: 20px;
     margin-block: 0.2rem;
-    color: ${({theme})=> theme.colors.tannat};
+    color: ${({ theme }) => theme.colors.tannat};
   }
 `
