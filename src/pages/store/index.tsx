@@ -1,46 +1,38 @@
-import Router from 'next/router';
-import { GetServerSideProps } from 'next';
-import { useCallback, useEffect, useState } from 'react';
-import { ProductsApiReturn } from 'src/types/product';
-import { useWindowSize } from '@hooks/useWindowSize';
-import Paginator from '@components/Paginator';
-import ProductCard from '@components/ProductCard';
-import RangeFilter from '@components/RangeFilter';
+import Router from 'next/router'
+import { GetServerSideProps } from 'next'
+import { useEffect } from 'react'
+import { ProductsApiReturn } from 'src/types/product'
+import { useWindowSize } from '@hooks/useWindowSize'
+import Paginator from '@components/Paginator'
+import ProductCard from '@components/ProductCard'
+import RangeFilter from '@components/RangeFilter'
 
 const requestOptions: RequestInit = {
   method: 'GET',
   redirect: 'follow'
-};
-
-type StoreProps = {
-  products: ProductsApiReturn;
-  queryFilter: string;
-  queryName: string;
 }
 
-const Store = ({ products, queryFilter, queryName }: StoreProps) => {
-  const [isMobile, setIsMobile] = useState<boolean>(false)
-  const { width } = useWindowSize()
+interface StoreProps {
+  products: ProductsApiReturn
+  queryFilter: string
+  queryName: string
+}
+
+const Store = ({ products, queryFilter, queryName }: StoreProps): JSX.Element => {
+  const { isMobile } = useWindowSize()
 
   useEffect(() => {
-    if (isMobile) Router.push(`/loja/mobile${queryName}${queryFilter}`)
+    if (isMobile) void Router.push(`/loja/mobile${queryName}${queryFilter}`)
   }, [isMobile, queryFilter, queryName])
 
-  const checkMobile = useCallback(async () => {
-    while(!width) await new Promise((resolve) => setTimeout(resolve, 50))
-    setIsMobile(width <= 375)
-  }, [width])
-
-  useEffect(() => {
-    checkMobile()
-  }, [checkMobile])
-
-  if (products.totalItems === 0) return (
-    <div>
-      <RangeFilter />
-      <h1>Nenhum produto foi encontrado. Tente com outros filtros...</h1>
-    </div>
-  )
+  if (products.totalItems === 0) {
+    return (
+      <div>
+        <RangeFilter />
+        <h1>Nenhum produto foi encontrado. Tente com outros filtros...</h1>
+      </div>
+    )
+  }
 
   return (
     <div>
@@ -73,7 +65,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query, res }) => 
   )
 
   const { page, name, filter } = query
-  const queryFilter = filter ? `&filter=${filter}` : ''
+  const queryFilter = (filter && filter.length > 0) ? `&filter=${filter}` : ''
   const queryName = name ? `&name=${name}` : ''
   const queryPage = page ? `&page=${page}` : '&page=1'
   const url = `https://wine-back-test.herokuapp.com/products?limit=9${queryPage}${queryName}${queryFilter}`
@@ -84,8 +76,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query, res }) => 
     props: {
       products,
       queryFilter,
-      queryName,
-    },
+      queryName
+    }
   }
 }
 

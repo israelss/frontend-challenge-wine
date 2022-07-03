@@ -1,44 +1,36 @@
-import Router from 'next/router';
-import { GetServerSideProps } from 'next';
-import { useCallback, useEffect, useState } from 'react';
-import { ProductsApiReturn } from 'src/types/product';
-import { useWindowSize } from '@hooks/useWindowSize';
-import Paginator from '@components/Paginator';
-import ProductCard from '@components/ProductCard';
+import Router from 'next/router'
+import { GetServerSideProps } from 'next'
+import { useEffect } from 'react'
+import { ProductsApiReturn } from 'src/types/product'
+import { useWindowSize } from '@hooks/useWindowSize'
+import Paginator from '@components/Paginator'
+import ProductCard from '@components/ProductCard'
 
 const requestOptions: RequestInit = {
   method: 'GET',
   redirect: 'follow'
-};
-
-type StoreProps = {
-  products: ProductsApiReturn;
-  queryFilter: string;
-  queryName: string;
 }
 
-const Store = ({ products, queryFilter, queryName }: StoreProps) => {
-  const [isNotMobile, setIsNotMobile] = useState<boolean>(false)
-  const { width } = useWindowSize()
+interface StoreProps {
+  products: ProductsApiReturn
+  queryFilter: string
+  queryName: string
+}
+
+const Store = ({ products, queryFilter, queryName }: StoreProps): JSX.Element => {
+  const { isMobile } = useWindowSize()
 
   useEffect(() => {
-    if (isNotMobile) Router.push(`/loja${queryName}${queryFilter}`)
-  }, [isNotMobile, queryFilter, queryName])
+    if (!isMobile) void Router.push(`/loja${queryName}${queryFilter}`)
+  }, [isMobile, queryFilter, queryName])
 
-  const checkMobile = useCallback(async () => {
-    while(!width) await new Promise((resolve) => setTimeout(resolve, 50))
-    setIsNotMobile(width > 375)
-  }, [width])
-
-  useEffect(() => {
-    checkMobile()
-  }, [checkMobile])
-
-  if (products.totalItems === 0) return (
-    <div>
-      <h1>Nenhum produto foi encontrado. Tente com outros filtros...</h1>
-    </div>
-  )
+  if (products.totalItems === 0) {
+    return (
+      <div>
+        <h1>Nenhum produto foi encontrado. Tente com outros filtros...</h1>
+      </div>
+    )
+  }
 
   return (
     <div>
@@ -49,7 +41,7 @@ const Store = ({ products, queryFilter, queryName }: StoreProps) => {
         ))
       }
       <Paginator
-        mobile={true}
+        mobile
         itemsPerPage={products.itemsPerPage}
         page={products.page}
         totalItems={products.totalItems}
@@ -80,8 +72,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query, res }) => 
     props: {
       products,
       queryFilter,
-      queryName,
-    },
+      queryName
+    }
   }
 }
 
