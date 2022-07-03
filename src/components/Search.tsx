@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from "react"
 import { useFilter } from "@hooks/useFilter";
+import WineIcon from "./WineIcon";
 
 const Search = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -12,7 +13,7 @@ const Search = () => {
 
   return (
     <div>
-      <button onClick={()=>setIsOpen(!isOpen)}>Toggle Search</button>
+      <WineIcon onClick={()=>setIsOpen(!isOpen)} id="search-icon" />
       {
         isOpen && (
           <div>
