@@ -5,7 +5,9 @@ const UserAvatar = () => {
   return (
     <div>
       <Link href="/conta">
-        <WineIcon id="account-icon" />
+        <a>
+          <WineIcon id="account-icon" />
+        </a>
       </Link>
     </div>
   )
