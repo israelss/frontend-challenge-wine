@@ -1,24 +1,24 @@
-import Link from 'next/link'
+import { StyledNav, StyledNavItem } from 'src/styles/styledComponents'
 
 const Nav = (): JSX.Element => {
   return (
-    <div>
-      <Link href='/clube'>
+    <StyledNav>
+      <StyledNavItem href='/clube'>
         Clube
-      </Link>
-      <Link href='/loja'>
+      </StyledNavItem>
+      <StyledNavItem href='/loja'>
         Loja
-      </Link>
-      <Link href='/produtores'>
+      </StyledNavItem>
+      <StyledNavItem href='/produtores'>
         Produtores
-      </Link>
-      <Link href='/ofertas'>
+      </StyledNavItem>
+      <StyledNavItem href='/ofertas'>
         Ofertas
-      </Link>
-      <Link href='/eventos'>
+      </StyledNavItem>
+      <StyledNavItem href='/eventos'>
         Eventos
-      </Link>
-    </div>
+      </StyledNavItem>
+    </StyledNav>
   )
 }
 
