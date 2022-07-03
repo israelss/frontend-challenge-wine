@@ -6,7 +6,7 @@ const BaseLayout = ({ children }: PropsWithChildren): JSX.Element => {
   return (
     <StyledLayout>
       <Header />
-      {children}
+      <div className='pageContent'>{children}</div>
     </StyledLayout>
   )
 }
