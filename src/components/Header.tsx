@@ -1,5 +1,6 @@
 import { useWindowSize } from '@hooks/useWindowSize'
 import { useEffect, useState } from 'react'
+import { StyledHeader } from 'src/styles/styledComponents'
 import Logo from './Logo'
 import Nav from './Nav'
 import Search from './Search'
@@ -19,14 +20,14 @@ const Header = (): JSX.Element => {
   }, [width])
 
   return (
-    <div>
+    <StyledHeader>
       {isMobile && <SideBar />}
       <Logo />
       {!isMobile && <Nav />}
       <Search />
       {!isMobile && <UserAccount />}
       <WineBox />
-    </div>
+    </StyledHeader>
   )
 }
 
