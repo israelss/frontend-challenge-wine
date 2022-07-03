@@ -13,7 +13,9 @@ const Search = () => {
 
   return (
     <div>
-      <WineIcon onClick={()=>setIsOpen(!isOpen)} id="search-icon" />
+      <button onClick={()=>setIsOpen(!isOpen)} className="openSearchButton">
+        <WineIcon id="search-icon" />
+      </button>
       {
         isOpen && (
           <div>
