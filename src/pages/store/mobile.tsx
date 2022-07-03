@@ -60,19 +60,17 @@ export const getServerSideProps: GetServerSideProps = async ({ query, res }) => 
     'public, s-maxage=30, stale-while-revalidate=60'
   )
 
-  const { page, name, filter, limit } = query
+  const { name, filter, limit } = query
 
   const validatedFilter = validateQueryItem(filter)
   const validatedLimit = validateQueryItem(limit)
   const validatedName = validateQueryItem(name)
-  const validatedPage = validateQueryItem(page)
 
   const queryFilter = validatedFilter.length > 0 ? `&filter=${validatedFilter}` : ''
-  const queryLimit = validatedLimit.length > 0 ? `&limit=${validatedLimit}` : 'limit=8'
+  const queryLimit = validatedLimit.length > 0 ? `limit=${validatedLimit}` : 'limit=8'
   const queryName = validatedName.length > 0 ? `&name=${validatedName}` : ''
-  const queryPage = validatedPage.length > 0 ? `&page=${validatedPage}` : '&page=1'
 
-  const url = `${API_URL}?${queryLimit}${queryPage}${queryName}${queryFilter}`
+  const url = `${API_URL}?${queryLimit}${queryName}${queryFilter}`
   const response = await fetch(url, requestOptions)
   const products: ProductsApiReturn = await response.json()
 

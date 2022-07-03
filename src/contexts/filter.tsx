@@ -18,19 +18,24 @@ export const FilterProvider = ({ children }: PropsWithChildren): JSX.Element => 
   const queryFilter = rangeFilter.length > 0 ? `&filter=${rangeFilter}` : ''
 
   useEffect(() => {
-    if (queryName.length > 0 || queryFilter.length > 0) {
-      void Router.push(`/loja?page=1${queryName}${queryFilter}`)
-    } else {
-      const path = Router.pathname
-      const { page, limit } = Router.query
-      const validatedPage = validateQueryItem(page)
-      const validatedLimit = validateQueryItem(limit)
-      const queryPage = validatedPage.length > 0 ? `&page=${validatedPage}` : '&page=1'
-      if (path.includes('/store/mobile')) {
-        const queryLimit = validatedLimit.length > 0 ? `&limit=${validatedLimit}` : 'limit=8'
-        void Router.push(`/loja/mobile${queryLimit}${queryPage}`)
-      } else if (path.includes('/store')) {
-        void Router.push(`/loja${queryPage}`)
+    const path = Router.pathname
+    if (path.includes('/store/mobile')) {
+      if (queryName.length > 0 || queryFilter.length > 0) {
+        void Router.push(`/loja/mobile?${queryName}${queryFilter}`)
+      } else {
+        const { limit } = Router.query
+        const validatedLimit = validateQueryItem(limit)
+        const queryLimit = validatedLimit.length > 0 ? `&limit=${validatedLimit}` : ''
+        void Router.push(`/loja/mobile${queryLimit}`)
+      }
+    } else if (path.includes('/store')) {
+      if (queryName.length > 0 || queryFilter.length > 0) {
+        void Router.push(`/loja?limit=9&page=1${queryName}${queryFilter}`)
+      } else {
+        const { page } = Router.query
+        const validatedPage = validateQueryItem(page)
+        const queryPage = validatedPage.length > 0 ? `&page=${validatedPage}` : '&page=1'
+        void Router.push(`/loja?limit=9${queryPage}`)
       }
     }
   }, [queryFilter, queryName])
