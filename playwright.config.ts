@@ -1,5 +1,5 @@
-import type { PlaywrightTestConfig } from '@playwright/test';
-import { devices } from '@playwright/test';
+import type { PlaywrightTestConfig } from '@playwright/test'
+import { devices } from '@playwright/test'
 
 const config: PlaywrightTestConfig = {
   testDir: './e2e',
@@ -10,48 +10,48 @@ const config: PlaywrightTestConfig = {
   fullyParallel: true,
   use: {
     baseURL: 'http://localhost:3000',
-    screenshot: 'only-on-failure',
+    screenshot: 'only-on-failure'
   },
 
   projects: [
     {
       name: 'chromium',
       use: {
-        ...devices['Desktop Chrome'],
-      },
+        ...devices['Desktop Chrome']
+      }
     },
 
     {
       name: 'firefox',
       use: {
-        ...devices['Desktop Firefox'],
-      },
+        ...devices['Desktop Firefox']
+      }
     },
 
     {
       name: 'webkit',
       use: {
-        ...devices['Desktop Safari'],
-      },
+        ...devices['Desktop Safari']
+      }
     },
     {
       name: 'Mobile Chrome',
       use: {
-        ...devices['Pixel 5'],
-      },
+        ...devices['Pixel 5']
+      }
     },
     {
       name: 'Mobile Safari',
       use: {
-        ...devices['iPhone 12'],
-      },
-    },
+        ...devices['iPhone 12']
+      }
+    }
   ],
 
   webServer: {
     command: 'npm run dev',
-    port: 3000,
-  },
-};
+    port: 3000
+  }
+}
 
-export default config;
+export default config

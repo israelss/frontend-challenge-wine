@@ -1,17 +1,17 @@
-import Image from "next/image";
-import Link from "next/link";
-import { useCart } from "@hooks/useCart";
-import { Product } from "src/types/product"
+import Image from 'next/image'
+import Link from 'next/link'
+import { useCart } from '@hooks/useCart'
+import { Product } from 'src/types/product'
 
-type ProductCardProps = {
-  product: Product;
+interface ProductCardProps {
+  product: Product
 }
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = ({ product }: ProductCardProps): JSX.Element => {
   const { addToCart } = useCart()
 
   return (
-    <div className="productCard">
+    <div className='productCard'>
       <Link href={`/loja/vinho/${product.id}`} passHref>
         <a>
           <Image src={product.image} alt={product.name} width={115} height={176} />
@@ -27,7 +27,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           <div>NÃO SÓCIO {product.priceNonMember}</div>
         </a>
       </Link>
-      <button onClick={ ()=> addToCart(product.id, product.image, product.name, product.priceNonMember) }>
+      <button onClick={() => addToCart(product.id, product.image, product.name, product.priceNonMember)}>
         Adicionar
       </button>
     </div>

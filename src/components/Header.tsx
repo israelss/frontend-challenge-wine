@@ -7,12 +7,12 @@ import SideBar from './SideBar'
 import UserAccount from './UserAccount'
 import WineBox from './WineBox'
 
-const Header = () => {
+const Header = (): JSX.Element => {
   const [isMobile, setIsMobile] = useState<boolean>(false)
   const { width } = useWindowSize()
 
   useEffect(() => {
-    if( width) {
+    if (width !== undefined) {
       const isMobileScreen = width <= 375
       setIsMobile(isMobileScreen)
     }
@@ -20,11 +20,11 @@ const Header = () => {
 
   return (
     <div>
-      { isMobile && <SideBar /> }
+      {isMobile && <SideBar />}
       <Logo />
-      { !isMobile && <Nav /> }
+      {!isMobile && <Nav />}
       <Search />
-      { !isMobile && <UserAccount /> }
+      {!isMobile && <UserAccount />}
       <WineBox />
     </div>
   )

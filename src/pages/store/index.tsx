@@ -65,9 +65,9 @@ export const getServerSideProps: GetServerSideProps = async ({ query, res }) => 
   )
 
   const { page, name, filter } = query
-  const queryFilter = (filter && filter.length > 0) ? `&filter=${filter}` : ''
-  const queryName = name ? `&name=${name}` : ''
-  const queryPage = page ? `&page=${page}` : '&page=1'
+  const queryFilter = (Boolean(filter) && filter?.length !== 0) ? `&filter=${JSON.stringify(filter)}` : ''
+  const queryName = (Boolean(name) && name?.length !== 0) ? `&name=${JSON.stringify(name)}` : ''
+  const queryPage = (Boolean(page) && page?.length !== 0) ? `&page=${JSON.stringify(page)}` : '&page=1'
   const url = `https://wine-back-test.herokuapp.com/products?limit=9${queryPage}${queryName}${queryFilter}`
   const response = await fetch(url, requestOptions)
   const products: ProductsApiReturn = await response.json()

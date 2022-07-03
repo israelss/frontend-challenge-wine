@@ -1,11 +1,11 @@
-type RatingProps = {
-  rating: number;
+interface RatingProps {
+  rating: number
 }
 
-const Rating = ({ rating }: RatingProps) => {
+const Rating = ({ rating }: RatingProps): JSX.Element => {
   return (
     <div>
-      { '★'.repeat(rating).padEnd(5, '☆') }
+      {'★'.repeat(rating).padEnd(5, '☆')}
     </div>
   )
 }

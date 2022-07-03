@@ -1,9 +1,9 @@
-export type Filters = {
-  name: string;
-  range: number;
+export interface Filters {
+  name: string
+  range: number
 }
 
-export type FilterContextType = {
-  setNameFilter: (name: string) => void;
-  setRangeFilter: (range: string) => void;
+export interface FilterContextType {
+  setNameFilter: (name: string) => void
+  setRangeFilter: (range: string) => void
 }

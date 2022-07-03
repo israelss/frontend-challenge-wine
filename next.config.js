@@ -4,10 +4,10 @@ const nextConfig = {
   images: {
     domains: [
       'www.wine.com.br',
-      'img.wine.com.br',
+      'img.wine.com.br'
     ]
   },
-  async rewrites() {
+  async rewrites () {
     return [
       {
         source: '/conta',
@@ -40,8 +40,8 @@ const nextConfig = {
       {
         source: '/eventos',
         destination: '/events'
-      },
-    ];
+      }
+    ]
   }
 }
 

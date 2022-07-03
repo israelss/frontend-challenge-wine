@@ -1,11 +1,11 @@
-import Link from "next/link"
-import WineIcon from "./WineIcon"
+import Link from 'next/link'
+import WineIcon from './WineIcon'
 
-const Logo = () => {
+const Logo = (): JSX.Element => {
   return (
     <div>
-      <Link href="/">
-        <WineIcon id="wine-logo" />
+      <Link href='/'>
+        <WineIcon id='wine-logo' />
       </Link>
     </div>
   )

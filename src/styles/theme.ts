@@ -1,28 +1,28 @@
-import { DefaultTheme } from "styled-components"
+import { DefaultTheme } from 'styled-components'
 
 declare module 'styled-components' {
   export interface DefaultTheme {
     colors: {
-      white: string;
-      black: string;
-      grayLightest: string;
-      grayLighter: string;
-      grayLight: string;
-      gray: string;
-      grayDarker: string;
-      grayDarkest: string;
-      tannatLight: string;
-      tannat: string;
-      tavel: string;
-      success: string;
-      chardonnay: string;
-      chenin: string;
-    };
+      white: string
+      black: string
+      grayLightest: string
+      grayLighter: string
+      grayLight: string
+      gray: string
+      grayDarker: string
+      grayDarkest: string
+      tannatLight: string
+      tannat: string
+      tavel: string
+      success: string
+      chardonnay: string
+      chenin: string
+    }
     shadows: {
-      level0: string;
-      level1: string;
-      level2: string;
-    };
+      level0: string
+      level1: string
+      level2: string
+    }
   }
 }
 
@@ -41,12 +41,12 @@ const wineTheme: DefaultTheme = {
     tavel: 'hsla(24, 91%, 65%, 1)',
     success: 'hsla(91, 47%, 50%, 1)',
     chardonnay: 'hsla(170, 100%, 35%, 1)',
-    chenin: 'hsla(10, 87%, 62%, 1)',
+    chenin: 'hsla(10, 87%, 62%, 1)'
   },
   shadows: {
     level0: '0px 10px 15px hsla(0, 0%, 0%, 0.1);',
     level1: '0px 2px 4px hsla(0, 0%, 0%, 0.1);',
-    level2: '0px 1px 2px hsla(0, 0%, 0%, 0.2);',
+    level2: '0px 1px 2px hsla(0, 0%, 0%, 0.2);'
   }
 }
 

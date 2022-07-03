@@ -1,4 +1,5 @@
-import { useContext } from "react";
-import { FilterContext } from "@contexts/filter";
+import { useContext } from 'react'
+import { FilterContext } from '@contexts/filter'
+import { FilterContextType } from 'src/types/filter'
 
-export const useFilter = () => useContext(FilterContext)
+export const useFilter = (): FilterContextType => useContext<FilterContextType>(FilterContext)

@@ -1,54 +1,57 @@
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
+import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
 import { Product } from 'src/types/product'
-import { useCart } from '@hooks/useCart';
-import Rating from './Rating';
+import { useCart } from '@hooks/useCart'
+import Rating from './Rating'
 
-type ProductDetailsProps = {
-  product: Product;
+interface ProductDetailsProps {
+  product: Product
 }
 
-const ProductDetails = ({ product }: ProductDetailsProps) => {
+const ProductDetails = ({ product }: ProductDetailsProps): JSX.Element => {
   const { addToCart } = useCart()
   const [amount, setAmount] = useState(1)
   const router = useRouter()
+
+  const handleBack = (): void => router.back()
+
   return (
     <div>
-      <button onClick={router.back}>
-        {"<"} Voltar
+      <button onClick={handleBack}>
+        {'<'} Voltar
       </button>
       <div>
-        Vinhos {">"} { product.country } {">"} { product.region }
+        Vinhos {'>'} {product.country} {'>'} {product.region}
       </div>
-      <h1>{ product.name }</h1>
+      <h1>{product.name}</h1>
       <Image src={product.image} alt={product.name} width={381} height={579} />
       <div>
         <span><Image src={product.flag} alt={product.country} width={16} height={16} /></span>
-        <span>{ product.country }</span>
-        <span>{ product.type }</span>
-        <span>{ product.classification }</span>
-        <span>{ product.volume || product.size }</span>
-        <Rating rating={ product.rating } />
-        <span>({ product.avaliations || product.Rating })</span>
+        <span>{product.country}</span>
+        <span>{product.type}</span>
+        <span>{product.classification}</span>
+        <span>{product.volume ?? product.size}</span>
+        <Rating rating={product.rating} />
+        <span>({product.avaliations ?? product.Rating})</span>
       </div>
       <div>
-        { product.priceMember }
+        {product.priceMember}
       </div>
       <div>
-        NÃO SÓCIO R$ { product.priceNonMember }/UN.
+        NÃO SÓCIO R$ {product.priceNonMember}/UN.
       </div>
       <div>
         <h3>Comentário do Sommelier</h3>
         <p>
-          { product.sommelierComment }
+          {product.sommelierComment}
         </p>
       </div>
       <div>
-        <button disabled={ amount < 2 } onClick={ () => setAmount(amount => amount - 1) }>-</button>
-          <span>{ amount }</span>
-        <button onClick={ () => setAmount(amount => amount + 1) }>+</button>
-        <button onClick={ ()=> addToCart(product.id, product.image, product.name, product.priceNonMember, amount) }>
+        <button disabled={amount < 2} onClick={() => setAmount(amount => amount - 1)}>-</button>
+        <span>{amount}</span>
+        <button onClick={() => setAmount(amount => amount + 1)}>+</button>
+        <button onClick={() => addToCart(product.id, product.image, product.name, product.priceNonMember, amount)}>
           Adicionar
         </button>
       </div>

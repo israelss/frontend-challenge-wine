@@ -1,16 +1,16 @@
-import Link from "next/link"
-import WineIcon from "./WineIcon"
+import Link from 'next/link'
+import WineIcon from './WineIcon'
 
-const UserAvatar = () => {
+const UserAccount = (): JSX.Element => {
   return (
     <div>
-      <Link href="/conta">
+      <Link href='/conta'>
         <a>
-          <WineIcon id="account-icon" />
+          <WineIcon id='account-icon' />
         </a>
       </Link>
     </div>
   )
 }
 
-export default UserAvatar
+export default UserAccount

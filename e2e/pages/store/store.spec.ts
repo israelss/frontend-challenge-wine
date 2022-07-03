@@ -3,20 +3,20 @@ import { test, expect } from '@playwright/test'
 test.describe('Página da loja', () => {
   test.describe('Em uma tela grande (> 375px)', () => {
     test.beforeEach(async ({ page }) => {
-      await page.goto('/loja');
-    });
+      await page.goto('/loja')
+    })
     test.use({
       viewport: {
         width: 1440,
         height: 1516
       }
-    });
+    })
     test('deve carregar 9 itens por padrão', async ({ page }) => {
       const productCards = page.locator('.productCard')
-      expect(productCards).toHaveCount(9)
+      await expect(productCards).toHaveCount(9)
     })
     test('deve conter botões de paginação', async ({ page }) => {
-      await expect(page).toHaveURL('/loja');
+      await expect(page).toHaveURL('/loja')
       const page1Button = page.locator('button', { hasText: '1' })
       const page2Button = page.locator('button', { hasText: '2' })
       const page3Button = page.locator('button', { hasText: '3' })
@@ -26,14 +26,14 @@ test.describe('Página da loja', () => {
       await expect(page3Button).toBeVisible()
       await expect(nextPageButton).toBeVisible()
       await nextPageButton.click()
-      await expect(page).toHaveURL('/loja?limit=9&page=2');
+      await expect(page).toHaveURL('/loja?limit=9&page=2')
       await nextPageButton.click()
       const page4Button = page.locator('button', { hasText: '4' })
       await expect(page4Button).toBeVisible()
       await page4Button.click()
       const page5Button = page.locator('button', { hasText: '5' })
       await expect(page5Button).toBeVisible()
-      await expect(page).toHaveURL('/loja?limit=9&page=4');
+      await expect(page).toHaveURL('/loja?limit=9&page=4')
     })
     test('deve conter um texto mostrando o total de itens', async ({ page }) => {
       const totalFound = page.locator('text=62 produtos encontrados')
@@ -81,18 +81,18 @@ test.describe('Página da loja', () => {
   })
   test.describe('Em uma tela pequena (<= 375px)', () => {
     test.beforeEach(async ({ page }) => {
-      await page.goto('/loja');
-      await page.waitForNavigation({url: '/loja/mobile'})
-    });
+      await page.goto('/loja')
+      await page.waitForNavigation({ url: '/loja/mobile' })
+    })
     test.use({
       viewport: {
         width: 375,
         height: 700
       }
-    });
+    })
     test('deve carregar 8 itens por padrão', async ({ page }) => {
       const productCards = page.locator('.productCard')
-      expect(productCards).toHaveCount(8)
+      await expect(productCards).toHaveCount(8)
     })
     test('deve conter um texto mostrando o total de itens', async ({ page }) => {
       const totalFound = page.locator('text=62 produtos encontrados')

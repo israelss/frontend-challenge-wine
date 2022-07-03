@@ -1,25 +1,25 @@
-import Link from "next/link";
+import Link from 'next/link'
 
-const Nav = () => {
+const Nav = (): JSX.Element => {
   return (
     <div>
-      <Link href="/clube">
+      <Link href='/clube'>
         Clube
       </Link>
-      <Link href="/loja">
+      <Link href='/loja'>
         Loja
       </Link>
-      <Link href="/produtores">
+      <Link href='/produtores'>
         Produtores
       </Link>
-      <Link href="/ofertas">
+      <Link href='/ofertas'>
         Ofertas
       </Link>
-      <Link href="/eventos">
+      <Link href='/eventos'>
         Eventos
       </Link>
     </div>
-  );
-};
+  )
+}
 
 export default Nav
