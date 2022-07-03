@@ -13,24 +13,28 @@ const ProductCard = ({ product }: ProductCardProps): JSX.Element => {
 
   return (
     <StyledProductCard className='productCard'>
-      <Link href={`/loja/vinho/${product.id}`} passHref>
-        <a>
-          <Image src={product.image} alt={product.name} width={115} height={176} />
-          <div>{product.name}</div>
-          <div>
-            <span>{product.price}</span>
-            <span>{product.discount}</span>
-          </div>
-          <div>
-            <span>SÓCIO WINE</span>
-            <span>{product.priceMember}</span>
-          </div>
-          <div>NÃO SÓCIO {product.priceNonMember}</div>
-        </a>
-      </Link>
-      <button onClick={() => addToCart(product.id, product.image, product.name, product.priceNonMember)}>
+      <div className='cardContent'>
+        <Link href={`/loja/vinho/${product.id}`} passHref>
+          <a>
+            <Image src={product.image} alt={product.name} width={128} height={178} />
+            <h4>{product.name}</h4>
+            <div className='discount'>
+              <span className='fullPrice'>{product.price}</span>
+              <span className='discountTag'>{product.discount}% OFF</span>
+            </div>
+            <div className='priceMember'>
+              <div className='priceMemberTag'>SÓCIO WINE</div>
+              <div className='priceMemberValue'><span>R$</span>{product.priceMember.toFixed(2)}</div>
+            </div>
+            <div className='priceNonMember'>
+              NÃO SÓCIO R$ {product.priceNonMember.toFixed(2)}
+            </div>
+          </a>
+        </Link>
+      </div>
+      <div className='cardButton' onClick={() => addToCart(product.id, product.image, product.name, product.priceNonMember)}>
         Adicionar
-      </button>
+      </div>
     </StyledProductCard>
   )
 }
