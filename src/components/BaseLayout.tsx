@@ -1,12 +1,13 @@
 import { PropsWithChildren } from 'react'
+import { StyledLayout } from 'src/styles/styledComponents'
 import Header from './Header'
 
 const BaseLayout = ({ children }: PropsWithChildren): JSX.Element => {
   return (
-    <div>
+    <StyledLayout>
       <Header />
       {children}
-    </div>
+    </StyledLayout>
   )
 }
 
