@@ -68,14 +68,14 @@ test.describe('Página da loja', () => {
       await expect(eventsLink).toBeVisible()
     })
     test('deve conter botão de busca no Header', async ({ page }) => {
-      const showSearchButton = page.locator('#search-icon')
+      const showSearchButton = page.locator('.openSearchButton')
       await showSearchButton.click()
       await expect(page.locator('button', { hasText: 'Buscar' })).toBeVisible()
       await showSearchButton.click()
       await expect(page.locator('button', { hasText: 'Buscar' })).not.toBeVisible()
     })
     test('deve conter link para a conta do usuário no Header', async ({ page }) => {
-      const accountLink = page.locator('#account-icon')
+      const accountLink = page.locator('a[href="/conta"]')
       await expect(accountLink).toBeVisible()
     })
   })
@@ -112,7 +112,7 @@ test.describe('Página da loja', () => {
       await expect(totalFoundAndShowing).toBeVisible()
     })
     test('deve conter botão de busca no Header', async ({ page }) => {
-      const showSearchButton = page.locator('#search-icon')
+      const showSearchButton = page.locator('.openSearchButton')
       await showSearchButton.click()
       await expect(page.locator('button', { hasText: 'Buscar' })).toBeVisible()
       await showSearchButton.click()
