@@ -21,19 +21,19 @@ const ProductDetails = ({ product }: ProductDetailsProps): JSX.Element => {
   return (
     <StyledProductDetails>
       <div className='backButton' onClick={handleBack}>
-        <WineIcon id="back-icon" width={32} height={32} />
+        <WineIcon id='back-icon' width={32} height={32} />
         Voltar
       </div>
-      <div className="productImage">
+      <div className='productImage'>
         <Image src={product.image} alt={product.name} width={381} height={579} />
       </div>
-      <div className="details">
+      <div className='details'>
         <div className='breadcrumb'>
-          <span className="level0">
+          <span className='level0'>
             Vinhos
           </span>
           {'>'}
-          <span className="level1">
+          <span className='level1'>
             {product.country}
           </span>
           {'>'}
@@ -64,7 +64,7 @@ const ProductDetails = ({ product }: ProductDetailsProps): JSX.Element => {
           </p>
         </div>
         <div className='quantityButtons'>
-          <div className={`minusButton ${amount < 2 && 'disabled'}`} onClick={() => setAmount(amount => amount === 1 ? amount : amount - 1)}>
+          <div className={`minusButton ${amount < 2 ? 'disabled' : ''}`} onClick={() => setAmount(amount => amount === 1 ? amount : amount - 1)}>
             -
           </div>
           <span>{amount}</span>
@@ -77,7 +77,7 @@ const ProductDetails = ({ product }: ProductDetailsProps): JSX.Element => {
         </div>
       </div>
     </StyledProductDetails>
-  );
+  )
 }
 
 export default ProductDetails
