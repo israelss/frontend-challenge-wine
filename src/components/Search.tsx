@@ -19,11 +19,11 @@ const Search = (): JSX.Element => {
       </div>
       {
         isOpen && (
-          <div>
+          <div className="searchBar">
             <input type='text' value={name} onChange={handleChange} />
-            <button onClick={() => setNameFilter(name)}>
+            <div className='searchButton' onClick={() => setNameFilter(name)}>
               Buscar
-            </button>
+            </div>
           </div>
         )
       }
