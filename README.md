@@ -2,6 +2,8 @@
 
 Esta é a minha solução para o desafio Frontend da Wine!
 
+Live Preview: [Vercel](https://frontend-challenge-wine.vercel.app/loja)
+
 # 🧠 Contexto
 
 O desafio foi implementar um e-commerce para venda de vinhos com as seguintes funcionalidades:
