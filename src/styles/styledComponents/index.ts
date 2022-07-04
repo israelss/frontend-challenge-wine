@@ -1,5 +1,6 @@
 export * from './StyledHeader'
 export * from './StyledLayout'
 export * from './StyledNav'
+export * from './StyledProductDetails'
 export * from './StyledStore'
 export * from './StyledWineBox'

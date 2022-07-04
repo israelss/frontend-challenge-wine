@@ -4,7 +4,7 @@ interface RatingProps {
 
 const Rating = ({ rating }: RatingProps): JSX.Element => {
   return (
-    <div>
+    <div className="rating">
       {'★'.repeat(rating).padEnd(5, '☆')}
     </div>
   )

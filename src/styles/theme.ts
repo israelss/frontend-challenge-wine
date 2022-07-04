@@ -3,6 +3,7 @@ import { DefaultTheme } from 'styled-components'
 declare module 'styled-components' {
   export interface DefaultTheme {
     colors: {
+      disabledWhite: string
       white: string
       black: string
       grayLightest: string
@@ -28,6 +29,7 @@ declare module 'styled-components' {
 
 const wineTheme: DefaultTheme = {
   colors: {
+    disabledWhite: 'hsla(0, 0%, 100%, 0.1)',
     white: 'hsla(0, 0%, 100%, 1)',
     black: 'hsla(0, 0%, 0%, 1)',
     grayLightest: 'hsla(0, 0%, 96%, 1)',
